@@ -1,5 +1,7 @@
 let walls = [];
 let particle;
+let xoff = 0;
+let yoff = 100000;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -23,8 +25,10 @@ function draw() {
   for (let wall of walls) {
     wall.draw();
   }
-
+  particle.move(noise(xoff) * width, noise(yoff) * height);
   particle.draw();
-  particle.move(mouseX, mouseY);
   particle.look(walls);
+
+  xoff += 0.01;
+  yoff += 0.01;
 }
